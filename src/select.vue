@@ -10,6 +10,18 @@
         {
           label: 'Jorge',
           value: 1
+        },
+        {
+          label: 'Pepito',
+          value: 2
+        },
+        {
+          label: 'Juanito',
+          value: 3
+        },
+        {
+          label: 'Messi',
+          value: 4
         }
       ]"
       v-model="value"
