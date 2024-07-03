@@ -19,19 +19,3 @@ const options = [
   { label: 'Alguien 3', value: 4 }
 ]
 </script>
-
-<style>
-.espacio {
-  padding: 4px;
-  width: 100%;
-  height: 100%;
-  border-radius: 4px;
-  background-color: gainsboro;
-  border: none;
-  text-align: end;
-}
-.p-2 {
-  width: 180px;
-  height: 75px;
-}
-</style>
