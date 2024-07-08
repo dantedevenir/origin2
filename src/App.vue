@@ -74,23 +74,37 @@
     <Dialog v-model="dialog1">
       <template #body-title>
         <div class="grid grid-cols-4">
-          <div class="mr-3">
-            <h1 class="col-span-2 text-center font-semibold">{{ info[0].name }}</h1>
+          <div class="absolute inset-0 bg-white grid grid-cols-1 bg-white z-0" style="height: 25%">
+            <p></p>
+          </div>
+        </div>
+      </template>
+      <template #body-content>
+        <div class="grid grid-cols-4 bg-gray-400 rounded-lg">
+          <div class="flex col-span-4 justify-center">
             <img
               :src="imagen"
               alt=""
-              class="col-start-4 col-span-2 row-start-1 mt-2"
-              style="border-radius: 50%; width: 200px"
+              class="border-4 border-zinc-500 shadow-2xl shadow-black"
+              style="border-radius: 50%; width: 200px; z-index: 10"
             />
-            <br />
-            <h4 class="text-center font-semibold">ID: {{ info[0].id }}</h4>
-            <br />
-            <h4 class="text-center font-semibold">LOCATION: {{ info[0].location }}</h4>
-            <br />
-            <h4 class="text-center font-semibold">STATUS: {{ info[0].status }}</h4>
           </div>
-          <div class="col-start-2 col-span-3">
-            <p class="row-start-1 col-span-3 p-3">
+          <div class="flex justify-center col-span-4 text-2xl mt-6 z-10">
+            <h1 class="font-bold">{{ info[0].name }}</h1>
+          </div>
+          <div class="flex justify-around col-span-4 z-10">
+            <p class="font-mono italic font-semibold">{{ info[0].id }}</p>
+          </div>
+          <div class="flex justify-around col-span-4 mt-4 text-lg z-10">
+            <h4 class="text-black-400 font-bold">Location</h4>
+            <h4 class="text-black-400 font-bold mr-5">Status</h4>
+          </div>
+          <div class="flex justify-around col-span-4 z-10">
+            <p class="font-mono italic">{{ info[0].location }}</p>
+            <p class="font-mono italic mr-10">{{ info[0].status }}</p>
+          </div>
+          <div class="col-span-4 z-10">
+            <p class="col-span-4 p-5 italic">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum repellat optio earum
               nesciunt doloremque, minima delectus qui magni praesentium, repellendus aspernatur
               ratione fugiat non dolor iste totam et? Maxime, ipsum! Lorem ipsum dolor sit, amet
@@ -99,11 +113,11 @@
               dolores ratione. Delectus.
             </p>
           </div>
+          <div class="flex col-span-4 justify-center mb-4">
+            <Button class="" variant="solid" @click="confirm">Confirm</Button>
+            <Button class="ml-2" @click="dialog1 = false">Close</Button>
+          </div>
         </div>
-      </template>
-      <template #actions>
-        <Button variant="solid" @click="confirm">Confirm</Button>
-        <Button class="ml-2" @click="dialog1 = false">Close</Button>
       </template>
     </Dialog>
   </Variant>
@@ -184,6 +198,7 @@ const custom_columns = reactive([
 ])
 
 function onRowClick(rowSelect: any) {
+  info.value = []
   dialog1.value = true
   console.log(rowSelect)
   const id = rowSelect.id
@@ -264,3 +279,10 @@ function confirm() {
   dialog1.value = false
 }
 </script>
+
+<style>
+#headlessui-portal-root > div > div > div > div > div > div {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+</style>
