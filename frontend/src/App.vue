@@ -231,8 +231,7 @@ function data() {
 async function search() {
   await axios
     .get(`https://rickandmortyapi.com/api/character/${id_character.value}`)
-    .then((response) => {
-      const json_result = response.data
+    .then((response) => {      const json_result = response.data
       if (json_result) {
         const id = json_result.id
         const name = json_result.name
@@ -274,9 +273,19 @@ function deleteSelect(selections: any, unselectAll: any) {
   unselectAll()
 }
 
-function confirm() {
-  alert('Confirmacion exitosa')
-  dialog1.value = false
+async function confirm() {
+  await axios
+    .get('http://localhost:8000/')
+    .then((response) => {
+      const json_result = response.data
+      if (json_result) {
+        alert(json_result['message'])
+        dialog1.value = false
+      }
+    })
+    .catch((error) => {
+      console.error('Error in get address', error)
+    })
 }
 </script>
 
